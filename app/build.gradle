@@ -1,0 +1,83 @@
+apply plugin: 'com.android.application'
+apply plugin: 'me.tatarka.retrolambda'
+android {
+    compileSdkVersion 23
+    buildToolsVersion "23.0.2"
+
+    defaultConfig {
+        applicationId "com.xm.weather"
+        minSdkVersion 15
+        targetSdkVersion 23
+        versionCode 1
+        versionName "1.0"
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+    retrolambda {
+        javaVersion JavaVersion.VERSION_1_6
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+}
+repositories {
+    flatDir { dirs 'libs' }
+}
+repositories {
+    // for com.github.orhanobut:logger:1.12
+    maven { url "https://jitpack.io" }
+}
+dependencies {
+    compile fileTree(include: ['*.jar'], dir: 'libs')
+    testCompile 'junit:junit:4.12'
+    compile(name: 'lib', ext: 'aar')
+    compile 'com.android.support:support-v4:23.1.1'
+    compile 'com.android.support:appcompat-v7:23.1.1'
+    compile 'com.android.support:design:23.1.1'
+    compile 'com.android.support:cardview-v7:23.1.1'
+    compile 'com.joanzapata.android:base-adapter-helper:1.1.11'
+    // retrofit 网络请求库
+    compile 'com.squareup.retrofit:retrofit:2.0.0-beta2'
+    compile 'com.squareup.retrofit:converter-gson:2.0.0-beta2'
+    compile 'com.squareup.retrofit:adapter-rxjava:2.0.0-beta2'
+    compile 'com.squareup.okhttp:okhttp:2.7.0'
+    // ReactiveX 经典的线程操作
+    compile 'io.reactivex:rxjava:1.0.16'
+    compile 'io.reactivex:rxandroid:1.0.1'
+    compile 'com.jakewharton.rxbinding:rxbinding:0.4.0'
+    // Glide 一个异步的图片加载器，自带缓存机制
+    compile 'com.github.bumptech.glide:glide:3.6.1'
+    // Reservoir 一个轻量级的存储库
+    compile 'com.anupcowkur:reservoir:2.1'
+    // other
+    compile 'com.github.orhanobut:logger:1.12'
+    compile 'com.android.support:appcompat-v7:23.1.1'
+    // 记得添加回收view
+    compile 'com.android.support:recyclerview-v7:23.1.1'
+    // 记得添加动画库
+    compile 'com.nineoldandroids:library:2.4.0'
+    // 注解库
+    compile 'com.jakewharton:butterknife:7.0.1'
+    // 对话框库
+    compile 'cn.pedant.sweetalert:library:1.3'
+    // gson 解析库
+    compile 'com.google.code.gson:gson:2.4'
+    // 检测UI卡顿
+    compile 'com.github.moduth:blockcanary-ui:1.1.4'
+    // 内存泄露检测
+    debugCompile 'com.squareup.leakcanary:leakcanary-android:1.3.1'
+    // or 1.4-beta1
+    releaseCompile 'com.squareup.leakcanary:leakcanary-android-no-op:1.3.1'
+    // or 1.4-beta1
+    compile 'com.jiongbull:jlog:1.0.4'
+
+    compile 'com.android.support:design:23.2.0'
+    compile 'com.squareup:otto:1.3.8'
+    // apt 'com.google.dagger:dagger-compiler:2.0'
+    // compile 'com.google.dagger:dagger:2.0'
+}
